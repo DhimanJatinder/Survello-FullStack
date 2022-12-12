@@ -1,0 +1,80 @@
+POST http://localhost:3000/api/auth/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "Jatinder",
+    "password": "123456"
+}
+
+###
+POST http://localhost:3000/api/auth/register HTTP/1.1
+content-type: application/json
+
+{
+    "username": "Jatinder",
+    "password": "123456",
+    "emailAddres": "jdhiman1@my.centennialcollege.ca",
+    "displayName": "Jatinder Dhiman"
+}
+
+###
+GET http://localhost:3000/api/auth/logout HTTP/1.1
+content-type: application/json
+
+
+// add survey
+###
+POST http://localhost:3000/api/surveys/add HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Test Title 1",
+    "description": "Test Description 1",
+    "surveyType": "Agree/Disagree",
+    "content":"{{ques:A/D ques 1,choices:[Agree,Disagree,Neither Agree nor Disagree]}}"
+}
+
+###
+POST http://localhost:3000/api/surveys/add HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Test Title 2",
+    "description": "Test Description 2",
+    "surveyType": "Multiple Choice",
+    "content":"{{ques: MC ques 1,choices:[option1,option2,option3]}}"
+}
+
+###
+POST http://localhost:3000/api/surveys/add HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Test Title 3",
+    "description": "Test Description 3",
+    "surveyType": "Short Answer",
+    "content":"{{ques:Short ques 1,ans:Short ans 1}}"
+}
+
+//get all surveys
+###
+GET http://localhost:3000/api/surveys/list HTTP/1.1
+content-type: application/json
+
+//Edit Survey
+###
+PUT  http://localhost:3000/api/surveys/edit/6395e65510b182d29e85ee15 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Test Title 2",
+    "description": "Test Description 2",
+    "surveyType": "Multiple Choice",
+    "content":{{"ques":"MC ques 1","choices":["option1","option2","option3"]}}
+}
+
+//delete a survey
+###
+DELETE   http://localhost:3000/api/surveys/delete/6395a51264d2b711bd43184a HTTP/1.1
+content-type: application/json
+
