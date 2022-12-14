@@ -26,7 +26,7 @@ export function processLogin(req, res, next){
             }
 
             const authToken = GenerateToken(user);
-
+            console.log(user);
             return res.json({
                 success: true, 
                 msg: 'User Logged In Successfully',
@@ -36,13 +36,54 @@ export function processLogin(req, res, next){
                     username: user.username,
                     emailAddress: user.emailAddress
                 },
+                
                 token: authToken
             })
         })
     })(req, res, next);
 }
 
+export function processGet(req, res, next){
+    let id = req.params.id;
+
+  userModel.findById(id, (err, person) => {
+    if (err) {
+      console.error(err);
+      res.end(err);
+    }
+
+    return res.json({
+      success: true,
+      msg: "Success",
+      person,
+    });
+  });
+}
 export function processRegistration(req, res, next){
+    let newUser = new userModel({
+        ...req.body
+    });
+
+    userModel.register(newUser, req.body.password, (err) => {
+        if(err){
+            console.error(err);           
+
+            return res.json({
+                success: false,
+                msg: 'Error Registration Failed'
+            });
+        }
+
+        //all ok
+
+        return res.json({
+            success: true,
+            msg: 'User Registered Successfully'
+        });
+    })
+}
+/*
+export function processModify(req, res, next){
     let newUser = new userModel({
         ...req.body
     });
@@ -67,7 +108,7 @@ export function processRegistration(req, res, next){
         });
     })
 }
-
+*/
 export function processLogout(req, res, next){
     req.logOut((err) => {
         if(err){

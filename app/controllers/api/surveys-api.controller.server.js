@@ -81,7 +81,8 @@ export function Edit(req, res, next) {
 
 //For submission to survey
 export function Complete(req,res,next){
-   let id = req.params.id;
+  
+  let id = req.params.id;
   let newCompleteSurvey = new completeSurveyModel({
     ...req.body
   })
