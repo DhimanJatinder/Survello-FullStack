@@ -38,6 +38,7 @@ export function Add(req, res, next) {
   let newSurvey = new surveysModel({
     ...req.body,
   });
+
   surveysModel.create(newSurvey, (err) => {
     if (err) {
       console.error(err);
@@ -55,10 +56,13 @@ export function Add(req, res, next) {
 export function Edit(req, res, next) {
   let id = req.params.id;
 
+  console.log(req.body);
   let updatedSurvey = new surveysModel({
     _id: id,
     ...req.body,
   });
+
+
 
   surveysModel.updateOne({ _id: id }, updatedSurvey, (err) => {
     if (err) {
@@ -77,6 +81,7 @@ export function Edit(req, res, next) {
 export function Delete(req, res, next) {
   let id = req.params.id;
 
+  
   surveysModel.remove({ _id: id }, (err) => {
     if (err) {
       console.error(err);

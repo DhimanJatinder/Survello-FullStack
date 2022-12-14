@@ -54,6 +54,7 @@ export function ProcessLoginPage(req, res, next){
 
 export function ProcessRegisterPage(req, res, next){
     let newUser = new User({
+        id: req.body.uniqueId,
         username: req.body.username,
         emailAddress: req.body.emailAddress,
         displayName: req.body.firstName + " " + req.body.lastName
