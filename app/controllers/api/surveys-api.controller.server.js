@@ -1,4 +1,5 @@
 import surveysModel from "../../models/surveys.js";
+import completeSurvey from "../../models/completeSurvey.js";
 
 export function GetList(req, res, next) {
   surveysModel.find((err, surveysCollection) => {
@@ -80,8 +81,23 @@ export function Edit(req, res, next) {
 
 //For submission to survey
 export function Complete(req,res,next){
-  //let id = req.params.id;
+   let id = req.params.id;
+  let newCompleteSurvey = new completeSurveyModel({
+    ...req.body
+  })
 
+  completeSurvey.create(newCompleteSurvey, (err) => {
+    if (err) {
+      console.error(err);
+      res.end(err);
+    }
+
+    res.json({
+      success: true,
+      msg: "Success",
+      completeSurvey: newCompleteSurvey,
+    });
+  });
 
 }
 export function Delete(req, res, next) {
