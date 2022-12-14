@@ -7,8 +7,9 @@ const SurveysSchema = new Schema(
     title: String,
     description: String,
     surveyType: String,
+    lifeTime: String,
     content: [],
-    //owner: any,
+    owner: String,
   },
   {
     timestamps: true,
