@@ -42,7 +42,7 @@ import { MongoURI, Secret } from "../config/config.js";
 
 import authApiRouter from "./routes/api/auth-api.route.server.js";
 import surveysApiRouter from "./routes/api/surveys-api.route.server.js";
-
+import completeSurveyRouter from "./routes/api/completeSurveys-api.route.server.js"
 // Instantiate Express Application
 const app = express();
 
@@ -117,6 +117,7 @@ passport.use(strategy);
 // Use API Routes
 app.use("/api/auth", authApiRouter);
 app.use("/api/surveys", surveysApiRouter);
+app.use("/api/completeSurveys", completeSurveyRouter)
 
 // Use Angular routes
 app.get("/*", (req, res) => {

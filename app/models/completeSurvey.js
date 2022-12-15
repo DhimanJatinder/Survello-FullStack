@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const CompletedSurveySchema = new Schema(
   {
     _id: String,
-    completedId: String,
+    surveyId: String,
     title: String,
     description: String,
     content: [],
