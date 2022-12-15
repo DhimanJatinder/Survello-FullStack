@@ -5,7 +5,7 @@ import {
   Add,
   Edit,
   Delete,
-  Complete,
+  CompleteSurvey,
 } from "../../controllers/api/surveys-api.controller.server.js";
 const router = Router();
 
@@ -13,8 +13,8 @@ const router = Router();
 router.get("/list", GetList);
 router.get("/:id", Get);
 router.post("/add", Add);
+router.post("/complete", CompleteSurvey)
 router.put("/edit/:id", Edit);
 router.delete("/delete/:id", Delete);
-router.post("/complete", Complete)
 
 export default router;

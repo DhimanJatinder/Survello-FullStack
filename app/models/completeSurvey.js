@@ -4,17 +4,17 @@ const Schema = mongoose.Schema;
 
 const CompletedSurveySchema = new Schema(
   {
-    _id: Number,
-    completedId: Number,
+    _id: String,
+    completedId: String,
     title: String,
     description: String,
     content: [],
     feedback: String,
-    //owner: any,
+   // owner: String
   },
   {
     timestamps: true,
-    collection: "surveys",
+    collection: "completeSurveys",
   }
 );
 
